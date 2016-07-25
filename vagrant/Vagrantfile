@@ -1,0 +1,39 @@
+Vagrant.configure('2') do |config|
+  config.vm.provider 'virtualbox' do |box|
+    box.name = 'TransFriendly Boxen'
+  end
+
+  config.vm.box = 'ubuntu/trusty64'
+  # config.vm.box = 'ubuntu/xenial64'
+
+  config.omnibus.chef_version = :latest
+  config.landrush.enabled = true
+  config.landrush.tld = 'vm'
+
+  config.vm.hostname = 'transfriendly.vm'
+  config.vm.network 'private_network', ip: '10.20.30.10'
+
+  config.nfs.map_uid = Process.uid
+  config.nfs.map_gid = Process.gid
+  
+  config.vm.synced_folder '../', '/vagrant_data', type: 'nfs'
+  config.vm.provision :shell, path: 'bootstrap.sh'
+end
+
+unless Vagrant.has_plugin?('landrush')
+  puts 'You must install landrush before continuing:'
+  puts "To install, run 'vagrant plugin install landrush' in your homedir."
+  exit 1
+end
+
+unless Vagrant.has_plugin?('vagrant-cachier')
+  puts 'You must install vagrant-cachier before continuing:'
+  puts "To install, run 'vagrant plugin install vagrant-cachier' in your homedir."
+  exit 1
+end
+
+unless Vagrant.has_plugin?('vagrant-faster')
+  puts 'This Vagrantfile needs the plugin vagrant-faster installed.'
+  puts "To install, run 'vagrant plugin install vagrant-faster' in your homedir."
+  exit 1
+end
