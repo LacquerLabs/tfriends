@@ -1,0 +1,26 @@
+{
+  "name": "sasanrose/basic-app-nano-php",
+  "homepage": "https://github.com/sasanrose/basic-app-nano-php",
+  "description": "Basic Application Template for NanoPHP Framework",
+  "authors": [
+    {
+      "name": "Sasan Rose",
+      "email": "sasan.rose@gmail.com",
+      "homepage": "http://pioneermind.ir",
+      "role": "Developer"
+    }
+  ],
+  "license": "BSD-3-Clause",
+  "require": {
+    "php": ">=5.4.0",
+    "sasanrose/nanophp": "2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": ""
+    }
+  },
+  "config": {
+    "bin-dir": "bin/"
+  }
+}

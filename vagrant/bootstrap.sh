@@ -2,7 +2,7 @@
 
 # Use single quotes instead of double quotes to make it work with special-character passwords
 PASSWORD='password'
-PROJECTFOLDER='/vagrant_data/html'
+PROJECTFOLDER='/vagrant_data/transfriendly_app/public'
 
 # create project folder
 # sudo mkdir "${PROJECTFOLDER}"
